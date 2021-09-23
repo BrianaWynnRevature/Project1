@@ -26,4 +26,4 @@ To-do list:
 
 ---
 ## License
-This project uses the following license: MIT
+This project uses the following license: MIT_License
