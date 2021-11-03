@@ -20,6 +20,13 @@ steps:
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
+    
+- task: DotNetCoreCLI@2
+  displayName: 'Install .NET tools from local manifest'
+  inputs:
+    command: custom
+    custom: tool
+    arguments: 'restore'
 
 - template: templates/build.yml
   parameters:
@@ -28,13 +35,6 @@ steps:
 - template: templates/build.yml
   parameters:
     buildConfiguration: 'Release'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Install .NET tools from local manifest'
-  inputs:
-    command: custom
-    custom: tool
-    arguments: 'restore'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
