@@ -52,10 +52,10 @@ namespace WebAPIDemo
 
             app.UseHttpsRedirection();
 
-            app.UseRewriter(new RewriteOptions()
-                .AddRedirect("^$", "index.html")); //automatically directs user back to index.html landing page
+            app.UseRewriter(new RewriteOptions());
+                //.AddRedirect("^$", "index.html")); //automatically directs user back to index.html landing page
 
-            app.UseStaticFiles();// use js static files
+           // app.UseStaticFiles();// use js static files
             
             app.UseRouting();
 

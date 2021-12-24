@@ -11,24 +11,21 @@
 
 // namespace WebDemoTestLayer
 // {
-//     public class ProductTesting
+//   public class ProductTesting
+//   {
+//     [Fact]
+//     public void MapperToViewModelProduct()
 //     {
+//       //Arrange
+//       Product c = new Product() { Description = "cool tool", Name = "Hammer", Price = 32.45M };
 
+//       //Act
+//       ViewModelProduct c1 = ProductMapper.ProductToViewModelProduct(c);
 
-
-//         [Fact]
-//         public void MapperToViewModelProduct()
-//         {
-//             //Arrange
-//             Product c = new Product() { Description = "cool tool", Name = "Hammer", Price = 32.45M };
-
-//             //Act
-//             ViewModelProduct c1 = ProductMapper.ProductToViewModelProduct(c);
-
-//             //Assert
-//             Assert.Equal("cool tool", c1.Description);
-//             Assert.Equal("Hammer", c1.Name);
-//             Assert.Equal(32.45M, c1.Price);
-//         }
+//       //Assert
+//       Assert.Equal("cool tool", c1.Description);
+//       Assert.Equal("Hammer", c1.Name);
+//       Assert.Equal(32.45M, c1.Price);
 //     }
+//   }
 // }

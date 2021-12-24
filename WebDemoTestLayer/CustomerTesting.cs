@@ -11,7 +11,7 @@ namespace WebDemoTestLayer
 {
   public class CustomerTesting
   {
-    public CustomerTesting() { }
+    //public CustomerTesting() { }
 
     [Theory]
     [InlineData("Sumthim1@", 0)]
