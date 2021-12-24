@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebAPIDemoBusinessLayer.ViewModels;
-using WebAPIDemoBusinessLayer.Repositories;
-using WebAPIDemoBusinessLayer.Mappers;
 using WebAPIDemoDataAcess.EntityModels;
-using WebAPIDemoBusinessLayer.Interfaces;
 using Microsoft.Extensions.Logging;
+using WebAPIDemoDataAcess.Repositories;
+using WebAPIDemo.Mappers;
+using WebAPIDemo.ViewModels;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

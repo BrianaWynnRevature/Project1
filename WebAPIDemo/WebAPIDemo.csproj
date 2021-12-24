@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebAPIDemoBusinessLayer\WebAPIDemoBusinessLayer.csproj" />
     <ProjectReference Include="..\WebAPIDemoDataAcess\WebAPIDemoDataAcess.csproj" />
   </ItemGroup>
 
