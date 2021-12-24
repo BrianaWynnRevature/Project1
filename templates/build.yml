@@ -1,0 +1,52 @@
+parameters: 
+  buildConfiguration: 'Release'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'Build the project - ${{parameters.buildConfiguration}}'
+  inputs:
+    command: 'build'
+    arguments: '--no-restore --configuration ${{parameters.buildConfiguration}}'
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run Unit Tests --configuration ${{parameters.buildConfiguration}}'
+  inputs:
+    command: 'test'
+    arguments: '--no-build --configuration ${{parameters.buildConfiguration}} /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
+    publishTestResults: true
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Generate Code Coverage report'
+  inputs:
+    command: custom
+    custom: tool
+    arguments: 'run reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines'
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish code coverage report'
+  inputs:
+    codeCoverageTool: 'cobertura'
+    summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish the project - ${{parameters.buildConfiguration}}'
+  inputs:
+    command: 'publish'
+    projects: '**/*.csproj'
+    publishWebProjects: false
+    arguments: '--no-restore --configuration ${{parameters.buildConfiguration}} --output $(Build.ArtifactStagingDirectory)/${{parameters.buildConfiguration}}'
+    zipAfterPublish: true
+
+
+
+
+
+
+    #setup the trigger
+    #setup the build agent
+    #get the sdk (not necessary unless you need to specify a specific version)
+    #install the dependencies (restore)
+    #build in debug
+    #build in release
